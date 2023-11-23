@@ -15,7 +15,7 @@ export function checkQuery(string: string): QueryData {
     const result: QueryData = {
         isURL: true
     };
-
+    
     if (/soundcloud|snd/g.exec(url.hostname)) {
         result.sourceType = "soundcloud";
 
@@ -39,11 +39,14 @@ export function checkQuery(string: string): QueryData {
         }
     } else if (/spotify/g.exec(url.hostname)) {
         result.sourceType = "spotify";
-
+        
+        url.pathname = url.pathname.replace(/intl-fr\//, '');
+        
         if (["/playlist", "/album"].some((path) => url.pathname.startsWith(path))) {
             result.type = "playlist";
         } else if (url.pathname.startsWith("/track")) {
             result.type = "track";
+            return result;
         } else {
             result.type = "unknown";
         }
