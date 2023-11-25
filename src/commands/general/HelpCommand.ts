@@ -37,7 +37,7 @@ export class HelpCommand extends BaseCommand {
         });
 
     private readonly infoEmbed = createEmbed("info").setThumbnail(
-        "https://cdn.clytage.org/images/question_mark.png"
+        "https://cdn.discordapp.com/icons/1026120496615526440/a_822874afc889bb9900ca6e84a2d47168.gif"
     );
 
     public async execute(ctx: CommandContext): Promise<Message | undefined> {

@@ -50,6 +50,12 @@
                 "description": "Get the invite link for the bot",
                 "inviteTitle": "{bot} - Invite Link"
             },
+            "dice": {
+                "description": "Roll a dice",
+                "number": "number of dice",
+                "value":"Value of the dices",
+                "footerString": ""
+            },
             "ping": {
                 "description": "Shows the current ping of the bot",
                 "footerString": "Latency of: {user}"

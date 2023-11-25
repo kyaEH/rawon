@@ -8,31 +8,31 @@ import i18n from "../../config/index.js";
 import { ApplicationCommandOptionType, Message } from "discord.js";
 
 @Command({
-    aliases: ["loop", "music-repeat", "music-loop", "loopqueue"],
-    description: i18n.__("commands.music.repeat.description"),
-    name: "repeat",
+    aliases: ["loop", "music-loop", "music-loop", "loopqueue"],
+    description: i18n.__("commands.music.loop.description"),
+    name: "loop",
     slash: {
         options: [
             {
-                description: i18n.__("commands.music.repeat.slashQueue"),
+                description: i18n.__("commands.music.loop.slashQueue"),
                 name: "queue",
                 type: ApplicationCommandOptionType.Subcommand
             },
             {
-                description: i18n.__("commands.music.repeat.slashQueue"),
+                description: i18n.__("commands.music.loop.slashQueue"),
                 name: "song",
                 type: ApplicationCommandOptionType.Subcommand
             },
             {
-                description: i18n.__("commands.music.repeat.slashDisable"),
+                description: i18n.__("commands.music.loop.slashDisable"),
                 name: "disable",
                 type: ApplicationCommandOptionType.Subcommand
             }
         ]
     },
-    usage: i18n.__mf("commands.music.repeat.usage", { options: "queue | one | disable" })
+    usage: i18n.__mf("commands.music.loop.usage", { options: "queue | one | disable" })
 })
-export class RepeatCommand extends BaseCommand {
+export class LoopCommand extends BaseCommand {
     @inVC
     @haveQueue
     @sameVC
@@ -64,13 +64,13 @@ export class RepeatCommand extends BaseCommand {
                     createEmbed(
                         "info",
                         `${mode[ctx.guild!.queue!.loopMode].emoji} **|** ${i18n.__mf(
-                            "commands.music.repeat.actualMode",
+                            "commands.music.loop.actualMode",
                             {
                                 mode: `\`${ctx.guild!.queue!.loopMode}\``
                             }
                         )}`
                     ).setFooter({
-                        text: i18n.__mf("commands.music.repeat.footer", {
+                        text: i18n.__mf("commands.music.loop.footer", {
                             prefix: this.client.config.mainPrefix
                         })
                     })
@@ -83,7 +83,7 @@ export class RepeatCommand extends BaseCommand {
             embeds: [
                 createEmbed(
                     "success",
-                    `${mode[ctx.guild!.queue!.loopMode].emoji} **|** ${i18n.__mf("commands.music.repeat.newMode", {
+                    `${mode[ctx.guild!.queue!.loopMode].emoji} **|** ${i18n.__mf("commands.music.loop.newMode", {
                         mode: `\`${ctx.guild!.queue!.loopMode}\``
                     })}`
                 )
